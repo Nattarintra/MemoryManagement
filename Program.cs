@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkalProj_Datastrukturer_Minne.StackAndHeap;
+using System;
 
 namespace SkalProj_Datastrukturer_Minne
 {
@@ -10,6 +11,8 @@ namespace SkalProj_Datastrukturer_Minne
         /// <param name="args"></param>
         static void Main()
         {
+            QAndA.Stack(); // Example of how to use the Stack method
+            QAndA.Heap(); // Example of how to use the Heap method
 
             while (true)
             {
