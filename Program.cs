@@ -1,4 +1,6 @@
-﻿using SkalProj_Datastrukturer_Minne.StackAndHeap;
+﻿using PokemonSimulator.ConsoleUI;
+using SkalProj_Datastrukturer_Minne.StackAndHeap;
+using SkalProj_Datastrukturer_Minne.TheList;
 using System;
 
 namespace SkalProj_Datastrukturer_Minne
@@ -11,8 +13,6 @@ namespace SkalProj_Datastrukturer_Minne
         /// <param name="args"></param>
         static void Main()
         {
-            QAndA.Stack(); // Example of how to use the Stack method
-            QAndA.Heap(); // Example of how to use the Heap method
 
             while (true)
             {
@@ -65,23 +65,11 @@ namespace SkalProj_Datastrukturer_Minne
         /// </summary>
         static void ExamineList()
         {
-            /*
-             * Loop this method untill the user inputs something to exit to main menue.
-             * Create a switch statement with cases '+' and '-'
-             * '+': Add the rest of the input to the list (The user could write +Adam and "Adam" would be added to the list)
-             * '-': Remove the rest of the input from the list (The user could write -Adam and "Adam" would be removed from the list)
-             * In both cases, look at the count and capacity of the list
-             * As a default case, tell them to use only + or -
-             * Below you can see some inspirational code to begin working.
-            */
+          AddOrRemove.AddOrRemoveFromList();
 
-            //List<string> theList = new List<string>();
-            //string input = Console.ReadLine();
-            //char nav = input[0];
-            //string value = input.substring(1);
-
-            //switch(nav){...}
         }
+
+
 
         /// <summary>
         /// Examines the datastructure Queue
