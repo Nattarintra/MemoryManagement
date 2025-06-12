@@ -8,10 +8,7 @@ namespace PokemonSimulator.ConsoleUI
 {
     public class UI
     {
-        public static void Print()
-        {
-            Console.WriteLine();
-        }
+
         public static void Print(string message)
         {
             Console.WriteLine(message);
