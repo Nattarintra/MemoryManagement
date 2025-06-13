@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokemonSimulator.ConsoleUI
+namespace SkalProj_Datastrukturer_Minne.ConsoleUI
 {
     public class UI
     {

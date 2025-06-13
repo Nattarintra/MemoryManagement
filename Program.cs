@@ -1,6 +1,9 @@
-﻿using PokemonSimulator.ConsoleUI;
+﻿using SkalProj_Datastrukturer_Minne.CheckParams;
+using SkalProj_Datastrukturer_Minne.ConsoleUI;
+using SkalProj_Datastrukturer_Minne.Queue;
 using SkalProj_Datastrukturer_Minne.StackAndHeap;
 using SkalProj_Datastrukturer_Minne.TheList;
+using SkalProj_Datastrukturer_Minne.TheStack;
 using System;
 using System.Diagnostics;
 
@@ -14,8 +17,6 @@ namespace SkalProj_Datastrukturer_Minne
         /// <param name="args"></param>
         static void Main()
         {
-
-
             while (true)
             {
                 Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 ,4, 0) of your choice"
@@ -67,7 +68,16 @@ namespace SkalProj_Datastrukturer_Minne
         /// </summary>
         static void ExamineList()
         {
-          AddOrRemove.AddOrRemoveFromList();
+            /*
+              * Loop this method untill the user inputs something to exit to main menue.
+              * Create a switch statement with cases '+' and '-'
+              * '+': Add the rest of the input to the list (The user could write +Adam and "Adam" would be added to the list)
+              * '-': Remove the rest of the input from the list (The user could write -Adam and "Adam" would be removed from the list)
+              * In both cases, look at the count and capacity of the list
+              * As a default case, tell them to use only + or -
+              * Below you can see some inspirational code to begin working.
+             */
+            AddAndRemove.AddAndRemoveFromList();
 
         }
 
@@ -79,63 +89,11 @@ namespace SkalProj_Datastrukturer_Minne
         static void ExamineQueue()
         {
             /*
-             * Loop this method untill the user inputs something to exit to main menue.
-             * Create a switch with cases to enqueue items or dequeue items
-             * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
-            */
-            List<string> theQueue = new List<string>();
-
-            UI.Clear();
-            UI.Print("*==============================================================*\n");
-            UI.Print("Welcome to ICA Queue Service \n");
-            UI.Print("Enter +<Name> for enqueue  \n");
-            UI.Print("Enter -<Name> for dequeue \n");
-            UI.Print("Name 0 for exit the program \n ");
-            UI.Print("Example: +Adam or -Adam \n");
-            UI.Print("*==============================================================*\n");
-
-            do
-            {
-                
-                UI.Print("What would you like to do?: ");
-                string input = UI.GetInput();
-
-                char nav = input[0];
-                string value = input.Substring(1);// Get the rest of the input after the first character
-                switch (nav)
-                {
-                    case '+':
-                        {
-                            theQueue.Add(value); // Add the input to the list
-                            UI.Print($"Now {value}: is queue number {theQueue.Count}");
-                            break;
-                        }
-                    case '-':
-                        {
-                            theQueue.Remove(value);
-     
-                            // Re-indexing is not needed for List, but to show the new positions:
-                            UI.Print("Current Queue:");
-                            for (int i = 0; i < theQueue.Count; i++)
-                            {
-                                UI.Print($"Now {theQueue[i]} queue number {i + 1}:");
-                            }
-                            UI.Print($"{value} has been dequeued.");
-                            break;
-                        }
-                    case '0':
-                        {
-                            Environment.Exit(0);
-                            UI.Print("Exit the program:");
-                            break;
-                        }
-                    default:
-                        {
-                            UI.Print("Please enter a valid input (+, -, 0)");
-                            continue; // Continue the loop to ask for input again
-                        }
-                }
-            } while (true);
+              * Loop this method untill the user inputs something to exit to main menue.
+              * Create a switch with cases to enqueue items or dequeue items
+              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
+             */
+            EnqueueAndDequeue.EnqueueAndDequeueFromQueue();
 
         }
 
@@ -150,75 +108,8 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
+            PushAndPop.PushAndPopFromStack();
 
-            Stack<string> stacks = new();
-
-            UI.Clear();
-            UI.Print("*==============================================================*\n");
-            UI.Print("Welcome to Stack world! Let's try Push and Pop \n");
-            UI.Print("Enter +<Name> for enqueue  \n");
-            UI.Print("Enter - for dequeue \n");
-            UI.Print("Name 0 for exit the program \n ");
-            UI.Print("Example: +Adam or - \n");
-            UI.Print("*==============================================================*\n");
-
-            do
-            {
-
-                UI.Print("What would you like to do?: ");
-                string input = UI.GetInput();
-
-                char nav = input[0];
-                string value = input.Substring(1);// Get the rest of the input after the first character
-                switch (nav)
-                {
-                    case '+':
-                        {
-                            stacks.Push(value); // Add the input to the list
-                            UI.Print($"Now {value}: is added");
-                            UI.Print("Current Stack:");
-                            foreach (var stack in stacks)
-                            {
-                                UI.Print(stack);
-                            }
-                            break;
-                        }
-                    case '-':
-                        {
-                            ReverseStack();
-                            if (stacks.Count != 0)
-                            {
-                                stacks.Pop();
-                                // Show current stack after pop
-                                UI.Print("Current Stack:");
-                                foreach (var stack in stacks)
-                                {
-                                    UI.Print(stack);
-                                }
-                            }
-
-                            break;
-                        }
-                   
-                    case '0':
-                        {
-                            Environment.Exit(0);
-                            UI.Print("Exit the program:");
-                            break;
-                        }
-                    default:
-                        {
-                            UI.Print("Please enter a valid input (+, -, 0)");
-                            continue; // Continue the loop to ask for input again
-                        }
-                }
-            } while (true);
-
-        }
-
-        private static void ReverseStack()
-        {
-            // Fix stack reversing logic here Pop()  
         }
 
         static void CheckParanthesis()
@@ -229,6 +120,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
 
+           CheckParam.CheckParamsFromInput();
         }
 
     }
